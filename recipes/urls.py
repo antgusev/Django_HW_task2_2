@@ -17,12 +17,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from calculator.views import rec_calc
+from calculator.views import rec_calc_omlet, rec_calc_pasta, rec_calc_buter
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('recipe/<int:servings>/', rec_calc),
-    path('omlet/<int:servings>/', rec_calc),
-    path('pasta/<int:servings>/', rec_calc),
-    path('buter/<int:servings>/', rec_calc),
+    path('omlet/<int:servings>/', rec_calc_omlet),
+    path('pasta/<int:servings>/', rec_calc_pasta),
+    path('buter/<int:servings>/', rec_calc_buter),
+    # path('recipe/', rec_calc),
+
 ]

@@ -20,9 +20,39 @@ DATA = {
 }
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
-def rec_calc(request):
-    recipe = request.GET.get("recipe")
-    servings = request.GET.get("servings", 1)
+def rec_calc_omlet(request, recipe, servings):
+    recipe = request.GET.get('omlet')
+    servings = request.GET.get('servings', 1)
+    recipe_resp = DATA[recipe]
+    recipe_resp.update((key, value * servings) for key, value in recipe_resp.items())
+    # for ingredient, amount in recipe.items
+
+# В качестве контекста должен быть передан словарь с рецептом:
+    context = {
+      'recipe': recipe_resp
+    }
+# Результат - 
+    return render(request, 'calculator/index.html', context)
+
+
+def rec_calc_pasta(request, recipe, servings):
+    recipe = request.GET.get('pasta')
+    servings = request.GET.get('servings', 1)
+    recipe_resp = DATA[recipe]
+    recipe_resp.update((key, value * servings) for key, value in recipe_resp.items())
+    # for ingredient, amount in recipe.items
+
+# В качестве контекста должен быть передан словарь с рецептом:
+    context = {
+      'recipe': recipe_resp
+    }
+# Результат - 
+    return render(request, 'calculator/index.html', context)
+
+
+def rec_calc_buter(request, recipe, servings):
+    recipe = request.GET.get('buter')
+    servings = request.GET.get('servings', 1)
     recipe_resp = DATA[recipe]
     recipe_resp.update((key, value * servings) for key, value in recipe_resp.items())
     # for ingredient, amount in recipe.items
