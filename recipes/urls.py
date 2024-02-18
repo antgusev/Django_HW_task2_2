@@ -21,9 +21,7 @@ from calculator.views import rec_calc_omlet, rec_calc_pasta, rec_calc_buter
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('omlet/<int:servings>/', rec_calc_omlet),
-    path('pasta/<int:servings>/', rec_calc_pasta),
-    path('buter/<int:servings>/', rec_calc_buter),
-    # path('recipe/', rec_calc),
-
+    path('omlet/', rec_calc_omlet),
+    path('pasta/', rec_calc_pasta),
+    path('buter/', rec_calc_buter),
 ]

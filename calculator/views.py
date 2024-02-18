@@ -20,46 +20,58 @@ DATA = {
 }
 
 # Напишите ваш обработчик. Используйте DATA как источник данных
-def rec_calc_omlet(request, recipe, servings):
-    recipe = request.GET.get('omlet')
-    servings = request.GET.get('servings', 1)
-    recipe_resp = DATA[recipe]
-    recipe_resp.update((key, value * servings) for key, value in recipe_resp.items())
-    # for ingredient, amount in recipe.items
+def rec_calc_omlet(request):
+    servings_multiply = float(request.GET.get('servings', 1))
+    recipe_data = {}
+    for dish, ingredients in DATA.items():
+        if dish == 'omlet':
+            for ingredient, amount in ingredients.items():
+                recipe_data.setdefault(ingredient, [])
+                recipe_data[ingredient].append(amount * servings_multiply)
+        else:
+            continue
 
 # В качестве контекста должен быть передан словарь с рецептом:
     context = {
-      'recipe': recipe_resp
+      'recipe': recipe_data
     }
 # Результат - 
     return render(request, 'calculator/index.html', context)
 
 
-def rec_calc_pasta(request, recipe, servings):
-    recipe = request.GET.get('pasta')
-    servings = request.GET.get('servings', 1)
-    recipe_resp = DATA[recipe]
-    recipe_resp.update((key, value * servings) for key, value in recipe_resp.items())
-    # for ingredient, amount in recipe.items
+def rec_calc_pasta(request):
+    servings_multiply = float(request.GET.get('servings', 1))
+    recipe_data = {}
+    for dish, ingredients in DATA.items():
+        if dish == 'pasta':
+            for ingredient, amount in ingredients.items():
+                recipe_data.setdefault(ingredient, [])
+                recipe_data[ingredient].append(amount * servings_multiply)
+        else:
+            continue
 
 # В качестве контекста должен быть передан словарь с рецептом:
     context = {
-      'recipe': recipe_resp
+      'recipe': recipe_data
     }
 # Результат - 
     return render(request, 'calculator/index.html', context)
 
 
-def rec_calc_buter(request, recipe, servings):
-    recipe = request.GET.get('buter')
-    servings = request.GET.get('servings', 1)
-    recipe_resp = DATA[recipe]
-    recipe_resp.update((key, value * servings) for key, value in recipe_resp.items())
-    # for ingredient, amount in recipe.items
+def rec_calc_buter(request):
+    servings_multiply = float(request.GET.get('servings', 1))
+    recipe_data = {}
+    for dish, ingredients in DATA.items():
+        if dish == 'buter':
+            for ingredient, amount in ingredients.items():
+                recipe_data.setdefault(ingredient, [])
+                recipe_data[ingredient].append(amount * servings_multiply)
+        else:
+            continue
 
 # В качестве контекста должен быть передан словарь с рецептом:
     context = {
-      'recipe': recipe_resp
+      'recipe': recipe_data
     }
 # Результат - 
     return render(request, 'calculator/index.html', context)
